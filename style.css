@@ -1,0 +1,136 @@
+/* Basic Reset and Body Styling - More Vibrant */
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(135deg, #ff1493, #8a2be2, #00ced1); /* Pink, Violet, Turquoise */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden; 
+    perspective: 1000px; 
+}
+
+/* Main Content Container */
+#message-container, #game-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    z-index: 10;
+    max-width: 90%;
+    transition: transform 0.5s;
+}
+
+h1 {
+    color: #ff69b4; 
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+/* Game Styles */
+#start-game-btn {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.option-btn {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #87ceeb;
+    color: #333;
+    border: 1px solid #70adca;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.option-btn:hover {
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- Floating Stickers Animation --- */
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    50% { transform: translate(10px, -20px) rotate(5deg) scale(1.1); }
+    100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+}
+
+@keyframes moveY {
+    0% { transform: translateY(100vh) rotate(0deg); } /* Start below the screen */
+    100% { transform: translateY(-100vh) rotate(360deg); } /* Move up and spin */
+}
+
+.sticker-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.sticker {
+    position: absolute;
+    font-size: 3em;
+    opacity: 0.8;
+    animation: 
+        float 5s ease-in-out infinite alternate,
+        moveY 25s linear infinite; /* Slower, more continuous float */
+}
+/* Assign unique starting positions and delays for a scattered look */
+.sticker:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s, 0s; }
+.sticker:nth-child(2) { top: 50%; left: 80%; font-size: 4em; animation-delay: 2s, 5s; }
+.sticker:nth-child(3) { top: 20%; left: 60%; animation-delay: 4s, 10s; }
+.sticker:nth-child(4) { top: 70%; left: 25%; font-size: 3.5em; animation-delay: 6s, 15s; }
+.sticker:nth-child(5) { top: 90%; left: 45%; animation-delay: 8s, 20s; }
+
+
+/* --- SECRET MESSAGE STYLES --- */
+#secret-message-container {
+    background: #fffafa; 
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 0 50px 10px rgba(138, 43, 226, 0.7); 
+    text-align: center;
+    max-width: 90%;
+    transition: transform 1s ease-in-out;
+    z-index: 10;
+}
+
+#anime-girl-display {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    border-radius: 50%;
+    /* Default: Large Emoji */
+    font-size: 150px;
+    line-height: 200px;
+    background-color: #ffe4e1;
+    border: 5px solid #ff69b4;
+    animation: pulse 1s infinite alternate; 
+    /* To use an image named 'anime.jpg' uploaded to your server, uncomment and edit the lines below: 
+       background-image: url('anime.jpg');
+       background-size: cover; 
+       font-size: 0; 
+    */
+}
+
+@keyframes pulse {
+    from { box-shadow: 0 0 10px #ff1493; }
+    to { box-shadow: 0 0 30px #8a2be2; }
+}
